@@ -16,6 +16,7 @@ import posmy.interview.boot.respository.BookRepository;
 import posmy.interview.boot.respository.UserRepository;
 import posmy.interview.boot.security.JwtUtils;
 import posmy.interview.boot.service.exception.BookException;
+import posmy.interview.boot.service.exception.BookNotFoundException;
 import posmy.interview.boot.service.exception.UpdateBookException;
 import posmy.interview.boot.service.exception.UserException;
 
@@ -71,7 +72,7 @@ public class BookServiceImpl implements BookService {
 	public BookResponse findBookById(Long bookId) {
 
 		return bookRepository.findById(bookId).map(BookResponse::new)
-				.orElseThrow(() -> new BookException("Book not found!"));
+				.orElseThrow(() -> new BookNotFoundException("Book not found!"));
 
 	}
 
@@ -109,7 +110,7 @@ public class BookServiceImpl implements BookService {
 	public void deleteBookById(Long bookId) {
 
 		// Validate book if there is someone borrowed or not
-		BookEntity entity = bookRepository.findById(bookId).orElseThrow(() -> new BookException("Book not found!"));
+		BookEntity entity = bookRepository.findById(bookId).orElseThrow(() -> new BookNotFoundException("Book not found!"));
 
 		if (entity.getStatus().equals(EBookStatus.BORROWED)) {
 
@@ -141,7 +142,7 @@ public class BookServiceImpl implements BookService {
 
 		// Find book
 		BookEntity bookEntity = bookRepository.findById(bookId)
-				.orElseThrow(() -> new UpdateBookException("Book not found!"));
+				.orElseThrow(() -> new BookNotFoundException("Book not found!"));
 
 		// Validate book if there is someone borrowed or not
 		if (bookEntity.getStatus().equals(EBookStatus.BORROWED)) {
@@ -163,7 +164,7 @@ public class BookServiceImpl implements BookService {
 
 		// Find book
 		BookEntity bookEntity = bookRepository.findById(bookId)
-				.orElseThrow(() -> new UpdateBookException("Book not found!"));
+				.orElseThrow(() -> new BookNotFoundException("Book not found!"));
 
 		// Validate book if there is someone borrowed or not
 		if (bookEntity.getStatus().equals(EBookStatus.AVAILABLE)) {

@@ -19,6 +19,7 @@ import posmy.interview.boot.security.JwtUtils;
 import posmy.interview.boot.service.exception.AddUserException;
 import posmy.interview.boot.service.exception.UpdateUserException;
 import posmy.interview.boot.service.exception.UserException;
+import posmy.interview.boot.service.exception.UserNotFoundException;
 
 /**
  * Implementation of user service class.
@@ -63,7 +64,7 @@ public class UserServiceImpl implements UserService {
 	public UserResponse findUserById(Long userId) {
 
 		return userRepository.findById(userId).map(UserResponse::new)
-				.orElseThrow(() -> new UserException("Invalid user!"));
+				.orElseThrow(() -> new UserNotFoundException("User not found!"));
 	}
 
 	@Override
@@ -89,7 +90,8 @@ public class UserServiceImpl implements UserService {
 	public void updateUser(Long id, UpdateUserRequest request) {
 
 		// Find user
-		UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new UpdateUserException("Invalid user!"));
+		UserEntity userEntity = userRepository.findById(id)
+				.orElseThrow(() -> new UpdateUserException("Invalid user!"));
 
 		userEntity.setEmail(request.getEmail());
 		userEntity.setRole(request.getRole());
@@ -102,8 +104,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void deleteUserById(Long userId) {
 
-		UserEntity userEntity = userRepository.findById(userId)
-				.orElseThrow(() -> new UserException("Invalid user!"));
+		UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserException("Invalid user!"));
 
 		userRepository.delete(userEntity);
 
@@ -123,7 +124,7 @@ public class UserServiceImpl implements UserService {
 
 		// Find user
 		UserEntity userEntity = userRepository.findByEmail(jwtUtils.getUsernameFromToken(token))
-				.orElseThrow(() -> new UserException("Invalid user!"));
+				.orElseThrow(() -> new UserNotFoundException("User not found!"));
 
 		userRepository.delete(userEntity);
 

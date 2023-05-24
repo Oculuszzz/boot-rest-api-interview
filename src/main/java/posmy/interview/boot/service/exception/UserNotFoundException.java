@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author mokht
  *
  */
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class BookException extends RuntimeException {
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class UserNotFoundException extends RuntimeException {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class BookException extends RuntimeException {
 	/**
 	 * 
 	 */
-	public BookException() {
+	public UserNotFoundException() {
 
 		super();
 	}
@@ -26,9 +26,10 @@ public class BookException extends RuntimeException {
 	/**
 	 * 
 	 */
-	public BookException(String errorMessage) {
+	public UserNotFoundException(String errorMessage) {
 
 		super(errorMessage);
 
 	}
+
 }

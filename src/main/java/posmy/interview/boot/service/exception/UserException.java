@@ -1,6 +1,3 @@
-/**
- * 
- */
 package posmy.interview.boot.service.exception;
 
 import org.springframework.http.HttpStatus;

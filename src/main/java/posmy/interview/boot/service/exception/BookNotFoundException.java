@@ -1,6 +1,3 @@
-/**
- * 
- */
 package posmy.interview.boot.service.exception;
 
 import org.springframework.http.HttpStatus;
@@ -10,8 +7,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author mokht
  *
  */
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class RoleException extends RuntimeException {
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class BookNotFoundException extends RuntimeException {
 
 	/**
 	 * 
@@ -21,7 +18,7 @@ public class RoleException extends RuntimeException {
 	/**
 	 * 
 	 */
-	public RoleException() {
+	public BookNotFoundException() {
 
 		super();
 	}
@@ -29,10 +26,9 @@ public class RoleException extends RuntimeException {
 	/**
 	 * 
 	 */
-	public RoleException(String errorMessage) {
+	public BookNotFoundException(String errorMessage) {
 
 		super(errorMessage);
 
 	}
-
 }
