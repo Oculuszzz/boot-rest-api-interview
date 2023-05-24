@@ -162,7 +162,7 @@ class UserServiceImplTest {
 	void testUpdateUser() {
 
 		// given
-		UpdateUserRequest mockUpdateUserRequest = UserFactory.getInstance().constructUpdateUserLibrianRequest();
+		UpdateUserRequest mockUpdateUserRequest = UserFactory.getInstance().constructUpdateUserLibrarianRequest();
 		Optional<UserEntity> mockUserEntity = Optional.of(UserFactory.getInstance().constructUserEntityMember());
 		UserEntity expectedResult = UserFactory.getInstance().constructExpectedUpdateUserEntityLibrarian();
 
@@ -177,7 +177,6 @@ class UserServiceImplTest {
 																	// value in repository
 
 		UserEntity response = userArgumentCaptor.getValue();
-
 		assertThat(response).isEqualTo(expectedResult); // Compare result between ArgumentCaptor(after call
 														// updateUserFeature()) and expected result.
 	}

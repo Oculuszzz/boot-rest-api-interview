@@ -48,7 +48,7 @@ public final class UserFactory {
 
 	public UserEntity constructExpectedUpdateUserEntityLibrarian() {
 
-		return new UserEntity(2L, "update@gmail.com", "password", ERole.LIBRARIAN);
+		return new UserEntity(1L, "update@gmail.com", "password", ERole.LIBRARIAN);
 
 	}
 
@@ -69,7 +69,7 @@ public final class UserFactory {
 
 	}
 
-	public UpdateUserRequest constructUpdateUserLibrianRequest() {
+	public UpdateUserRequest constructUpdateUserLibrarianRequest() {
 
 		return new UpdateUserRequest("update@gmail.com", "password", ERole.LIBRARIAN);
 

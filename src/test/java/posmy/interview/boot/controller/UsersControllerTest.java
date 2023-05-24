@@ -4,7 +4,6 @@
 package posmy.interview.boot.controller;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -37,7 +36,6 @@ import org.springframework.web.context.WebApplicationContext;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import jakarta.transaction.Transactional;
 import posmy.interview.boot.mock.UserFactory;
 import posmy.interview.boot.payload.request.AddUserRequest;
 import posmy.interview.boot.payload.request.UpdateUserRequest;
@@ -51,7 +49,6 @@ import posmy.interview.boot.service.UserServiceImpl;
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application.properties")
 @AutoConfigureMockMvc
-@Transactional
 class UsersControllerTest {
 
 	private static final String USERS_API = "/api/v1/users";
@@ -106,7 +103,7 @@ class UsersControllerTest {
 	 */
 	@WithMockUser(username = "alex", password = "password", authorities = { "librarian:read" })
 	@Test
-	void testFindUsersByLibrian() throws Exception {
+	void testFindUsersByLibrarian() throws Exception {
 
 		// given
 		List<UserResponse> mockListUsers = UserFactory.getInstance().constructUsersEntitiesMemberLibrarian().stream()
@@ -262,7 +259,7 @@ class UsersControllerTest {
 	void testUpdateUserByLibrarian() throws JsonProcessingException, Exception {
 
 		// given
-		UpdateUserRequest request = UserFactory.getInstance().constructUpdateUserLibrianRequest();
+		UpdateUserRequest request = UserFactory.getInstance().constructUpdateUserLibrarianRequest();
 
 		// when
 		
@@ -286,7 +283,7 @@ class UsersControllerTest {
 	void testUpdateUserByMember() throws JsonProcessingException, Exception {
 
 		// given
-		UpdateUserRequest request = UserFactory.getInstance().constructUpdateUserLibrianRequest();
+		UpdateUserRequest request = UserFactory.getInstance().constructUpdateUserLibrarianRequest();
 
 		// when
 		
@@ -336,7 +333,7 @@ class UsersControllerTest {
 	 */
 	@WithMockUser(username = "alex", password = "password", authorities = { "librarian:delete" })
 	@Test
-	void testDeleteOwnUserByLibrian() throws Exception {
+	void testDeleteOwnUserByLibrarian() throws Exception {
 		
 		// then
 		mockMvc.perform(delete(USERS_API + "/delete-own-user/")
