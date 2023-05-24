@@ -6,18 +6,47 @@ package posmy.interview.boot.payload.request;
 import java.util.Objects;
 
 /**
+ * Update Book payload request class.
+ * 
  * @author mokht
  *
  */
 public class UpdateBookRequest {
 
+	/**
+	 * Book id.
+	 */
 	private Long id;
 
+	/**
+	 * Book author.
+	 */
 	private String author;
 
+	/**
+	 * Book title.
+	 */
 	private String bookTitle;
 
+	/**
+	 * Book description.
+	 */
 	private String bookDescription;
+
+	/**
+	 * Class constructor.
+	 * 
+	 * @param id
+	 * @param author
+	 * @param bookTitle
+	 * @param bookDescription
+	 */
+	public UpdateBookRequest(Long id, String author, String bookTitle, String bookDescription) {
+		this.id = id;
+		this.author = author;
+		this.bookTitle = bookTitle;
+		this.bookDescription = bookDescription;
+	}
 
 	/**
 	 * @return the id

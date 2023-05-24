@@ -78,6 +78,26 @@ public class BookEntity {
 	/**
 	 * Class constructor.
 	 * 
+	 * @param id
+	 * @param author
+	 * @param bookTitle
+	 * @param bookDescription
+	 * @param status
+	 * @param borrowedByUser
+	 */
+	public BookEntity(Long id, String author, String bookTitle, String bookDescription, EBookStatus status,
+			UserEntity borrowedByUser) {
+		this.id = id;
+		this.author = author;
+		this.bookTitle = bookTitle;
+		this.bookDescription = bookDescription;
+		this.status = status;
+		this.borrowedByUser = borrowedByUser;
+	}
+
+	/**
+	 * Class constructor.
+	 * 
 	 * @param author
 	 * @param bookTitle
 	 * @param bookDescription

@@ -15,6 +15,8 @@ import posmy.interview.boot.payload.response.AuthenticationResponse;
 import posmy.interview.boot.service.AuthenticateServiceImpl;
 
 /**
+ * Authenticate controller class.
+ * 
  * @author mokht
  *
  */
@@ -36,6 +38,12 @@ public class AuthenticateController {
 
 	}
 
+	/**
+	 * Responsible to authenticate user.
+	 * 
+	 * @param authenticationRequest
+	 * @return
+	 */
 	@PostMapping("/authenticate")
 	public ResponseEntity<AuthenticationResponse> authenticateUser(
 			@RequestBody AuthenticateRequest authenticationRequest) {

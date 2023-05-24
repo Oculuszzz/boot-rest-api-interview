@@ -4,6 +4,7 @@
 package posmy.interview.boot.service;
 
 import java.util.List;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -101,7 +102,10 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void deleteUserById(Long userId) {
 
-		userRepository.deleteById(userId);
+		UserEntity userEntity = userRepository.findById(userId)
+				.orElseThrow(() -> new UserException("Invalid user!"));
+
+		userRepository.delete(userEntity);
 
 	}
 
@@ -121,7 +125,7 @@ public class UserServiceImpl implements UserService {
 		UserEntity userEntity = userRepository.findByEmail(jwtUtils.getUsernameFromToken(token))
 				.orElseThrow(() -> new UserException("Invalid user!"));
 
-		userRepository.deleteById(userEntity.getId());
+		userRepository.delete(userEntity);
 
 	}
 

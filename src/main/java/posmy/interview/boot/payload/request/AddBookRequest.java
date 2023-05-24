@@ -6,6 +6,8 @@ package posmy.interview.boot.payload.request;
 import java.util.Objects;
 
 /**
+ * Add Book payload request class.
+ * 
  * @author mokht
  *
  */
@@ -25,6 +27,19 @@ public class AddBookRequest {
 	 * Book description.
 	 */
 	private String bookDescription;
+
+	/**
+	 * Class constructor.
+	 * 
+	 * @param author
+	 * @param bookTitle
+	 * @param bookDescription
+	 */
+	public AddBookRequest(String author, String bookTitle, String bookDescription) {
+		this.author = author;
+		this.bookTitle = bookTitle;
+		this.bookDescription = bookDescription;
+	}
 
 	/**
 	 * @return the author

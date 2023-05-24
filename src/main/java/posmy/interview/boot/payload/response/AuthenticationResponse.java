@@ -42,7 +42,6 @@ public class AuthenticationResponse {
 	 * @param roles
 	 */
 	public AuthenticationResponse(String accessToken, Long id, String email, List<String> roles) {
-		super();
 		this.accessToken = accessToken;
 		this.id = id;
 		this.email = email;

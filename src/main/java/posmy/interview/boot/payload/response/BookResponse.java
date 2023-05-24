@@ -14,16 +14,34 @@ import posmy.interview.boot.model.EBookStatus;
  */
 public class BookResponse {
 
+	/**
+	 * Book id.
+	 */
 	private Long id;
 
+	/**
+	 * Book author.
+	 */
 	private String author;
 
+	/**
+	 * Book title.
+	 */
 	private String bookTitle;
 
+	/**
+	 * Book description.
+	 */
 	private String bookDescription;
 
+	/**
+	 * Book status.
+	 */
 	private EBookStatus status;
 
+	/**
+	 * Book borrow by user (email).
+	 */
 	private String borrowByUserEmail;
 
 	/**

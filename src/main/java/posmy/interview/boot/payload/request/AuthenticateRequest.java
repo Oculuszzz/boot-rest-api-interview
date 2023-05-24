@@ -6,6 +6,8 @@ package posmy.interview.boot.payload.request;
 import java.util.Objects;
 
 /**
+ * Authenticate payload request class.
+ * 
  * @author mokht
  *
  */
@@ -20,6 +22,24 @@ public class AuthenticateRequest {
 	 * User password.
 	 */
 	private String password;
+
+	/**
+	 * Class constructor.
+	 */
+	public AuthenticateRequest() {
+
+	}
+
+	/**
+	 * Class constructor.
+	 * 
+	 * @param username
+	 * @param password
+	 */
+	public AuthenticateRequest(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 
 	/**
 	 * @return the username

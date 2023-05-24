@@ -109,7 +109,9 @@ public class BookServiceImpl implements BookService {
 	public void deleteBookById(Long bookId) {
 
 		// Validate book if there is someone borrowed or not
-		if (findBookById(bookId).getStatus().equals(EBookStatus.BORROWED)) {
+		BookEntity entity = bookRepository.findById(bookId).orElseThrow(() -> new BookException("Book not found!"));
+
+		if (entity.getStatus().equals(EBookStatus.BORROWED)) {
 
 			throw new BookException(String.format(
 					"Book %d is still borrowed by someone. Please ensure to return the book first before delete.",
@@ -117,7 +119,7 @@ public class BookServiceImpl implements BookService {
 
 		}
 
-		bookRepository.deleteById(bookId);
+		bookRepository.delete(entity);
 
 	}
 

@@ -28,6 +28,8 @@ import posmy.interview.boot.service.UserDetailsServiceImpl;
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 /**
+ * Web security configuration class.
+ * 
  * @author mokht
  *
  */

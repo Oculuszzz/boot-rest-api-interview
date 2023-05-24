@@ -10,6 +10,8 @@ import posmy.interview.boot.model.UserEntity;
 import posmy.interview.boot.userdetails.UserDetailsImpl;
 
 /**
+ * User Details Mapper class.
+ * 
  * @author mokht
  *
  */

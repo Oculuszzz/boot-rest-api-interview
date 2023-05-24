@@ -20,7 +20,6 @@ public class MessageResponse {
 	 * @param message
 	 */
 	public MessageResponse(String message) {
-		super();
 		this.message = message;
 	}
 

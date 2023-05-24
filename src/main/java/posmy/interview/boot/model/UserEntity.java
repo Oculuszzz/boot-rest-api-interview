@@ -56,6 +56,20 @@ public class UserEntity {
 	}
 
 	/**
+	 * @param id
+	 * @param email
+	 * @param password
+	 * @param role
+	 */
+	public UserEntity(Long id, String email, String password, ERole role) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.role = role;
+	}
+
+	/**
 	 * Class constructor.
 	 * 
 	 * @param email
